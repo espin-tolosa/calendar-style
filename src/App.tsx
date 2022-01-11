@@ -197,6 +197,13 @@ export default function App(): JSX.Element {
                 <Day key={day.toString()} day={day} />
               ))}
             </div>
+
+            <div className="month">
+              <DayStart weekday={"wed"} />
+              {days.map((day) => (
+                <Day key={day.toString()} day={day} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
