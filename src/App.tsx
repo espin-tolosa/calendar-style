@@ -150,6 +150,12 @@ export default function App(): JSX.Element {
                       action="post"
                     >
                       <input
+                        className="create-event-button"
+                        type="submit"
+                        value="Create"
+                      />
+
+                      <input
                         className="create-event-text"
                         type="text"
                         name="job"
@@ -175,11 +181,6 @@ export default function App(): JSX.Element {
                           placeholder="end"
                         />
                       </div>
-                      <input
-                        className="create-event-button"
-                        type="submit"
-                        value="Create"
-                      />
                     </form>
                   }
                 </div>
