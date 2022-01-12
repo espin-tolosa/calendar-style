@@ -142,48 +142,43 @@ export default function App(): JSX.Element {
           <div className="flex sticky top-controller">
             <div className="controller">
               {" "}
-              <div className="smooth-container">
-                <div className="smooth">
-                  {
-                    <form
-                      className="create-event flex flex-column"
-                      action="post"
-                    >
-                      <input
-                        className="create-event-button"
-                        type="submit"
-                        value="Create"
-                      />
+              <div className="smooth">
+                {
+                  <form className="create-event flex flex-column" action="post">
+                    <input
+                      className="create-event-button"
+                      type="submit"
+                      value="Create"
+                    />
 
+                    <input
+                      className="create-event-text"
+                      type="text"
+                      name="job"
+                      id="job"
+                      value="New job with a long title more long"
+                      placeholder="Job"
+                    />
+                    <div className="from-to-dates">
                       <input
                         className="create-event-text"
                         type="text"
-                        name="job"
-                        id="job"
-                        value="New job with a long title more long"
-                        placeholder="Job"
+                        name="start"
+                        id="start"
+                        value="31/01/2022"
+                        placeholder="start"
                       />
-                      <div className="from-to-dates">
-                        <input
-                          className="create-event-text"
-                          type="text"
-                          name="start"
-                          id="start"
-                          value="31/01/2022"
-                          placeholder="start"
-                        />
-                        <input
-                          className="create-event-text"
-                          type="text"
-                          name="end"
-                          id="end"
-                          value=""
-                          placeholder="end"
-                        />
-                      </div>
-                    </form>
-                  }
-                </div>
+                      <input
+                        className="create-event-text"
+                        type="text"
+                        name="end"
+                        id="end"
+                        value=""
+                        placeholder="end"
+                      />
+                    </div>
+                  </form>
+                }
               </div>
             </div>
           </div>
