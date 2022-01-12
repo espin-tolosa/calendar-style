@@ -23,6 +23,11 @@ html {
 html {
   font-size: var(--font_size);
 }
+@media (max-width: 640px) {
+  html {
+    font-size: calc(0.8 * var(--font_size));
+  }
+}
 
 .month-start-mon {
   display: none;
@@ -48,7 +53,7 @@ html {
 .calendar {
   margin-top: 1em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 0.5rem;
   margin-inline: 1em;
 }
@@ -88,7 +93,7 @@ html {
   display: flex;
   justify-content: right;
   background: lightgray;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: bold;
   padding: 1px 1px 1px;
   margin-bottom: 0.5em;
@@ -270,8 +275,9 @@ html {
   align-items: flex-end;
   justify-content: right;
   padding-inline: 1em;
-  font-size: 1.2em;
+  font-size: 1rem;
 }
+
 /* controller */
 
 .top {
