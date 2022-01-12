@@ -198,17 +198,15 @@ export default function App(): JSX.Element {
   return (
     <div className="App">
       <div
-        className="header-layout sticky"
+        className="header-layout sticky flex"
         onClick={() => setToogleCreate((prev) => !prev)}
       >
-        <div className="flex sticky">
-          <div className="header">
-            <div className="left-header">JH Diary</div>
-            <div className="center-header hidden">
-              Today: 10 of January of 2022
-            </div>
-            <div className="right-header">Logout</div>
+        <div className="header">
+          <div className="left-header">JH Diary</div>
+          <div className="center-header hidden">
+            Today: 10 of January of 2022
           </div>
+          <div className="right-header">Logout</div>
         </div>
       </div>
 
