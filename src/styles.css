@@ -47,10 +47,12 @@ html {
 }
 .calendar {
   margin-top: 1em;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   gap: 0.5rem;
+  margin-inline: 1em;
 }
+
 .month {
   display: grid;
   justify-content: right;
@@ -59,9 +61,8 @@ html {
   gap: 1px;
   position: relative;
   padding-inline: 0rem;
-  margin-inline: 1em;
-  outline: 1px solid gray;
-  box-shadow: rgba(0, 0, 0, 0.7) 0 0 5px;
+
+  box-shadow: hsla(0, 0%, 0%, 0.2) 0 0 13px;
   border-radius: 5px;
 }
 
@@ -155,12 +156,12 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (min-width: 801px) {
+@media (min-width: 641px) {
   .event {
     font-size: 0.7rem;
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 640px) {
   .event {
     font-size: 0.7rem;
   }
@@ -282,7 +283,6 @@ html {
 
 /* calendar */
 .calendar {
-  background: hsl(0, 0%, 98%);
 }
 
 /* utility classes */
