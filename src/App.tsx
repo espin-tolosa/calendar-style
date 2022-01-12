@@ -189,10 +189,13 @@ export default function App(): JSX.Element {
   const [toogleCreate, setToogleCreate] = useState(false);
 
   let stateToggle = "";
+  let controllerToggle = "";
   if (toogleCreate) {
     stateToggle = "smooth-display-on";
+    controllerToggle = "0.4fr";
   } else {
     stateToggle = "smooth-display-off";
+    controllerToggle = "0fr";
   }
   const controllerLayoutClassName = `controller-layout smooth ${stateToggle} sticky top-controller`;
 
@@ -211,7 +214,10 @@ export default function App(): JSX.Element {
         </div>
       </div>
 
-      <div className="main-layout">
+      <div
+        className="main-layout"
+        style={{ "grid-template-columns": `${controllerToggle} 1fr` }}
+      >
         <div className={controllerLayoutClassName}>
           <div className="controller sticky top-controller">
             {true && <CreateEvent />}
