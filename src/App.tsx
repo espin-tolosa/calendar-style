@@ -30,11 +30,11 @@ function DayStart({ weekday }: { weekday: string }) {
 const Day = ({ day }: { day: number }) => {
   const tempDay = String(day);
   const dayPadd = day < 10 ? `0${tempDay}` : tempDay;
-
+  /*
   const styles = {
-    backgroundColor: "orange"
+    backgroundColor: "white"
   } as const;
-
+style={styles} */
   return (
     <div
       className="day"
@@ -149,14 +149,6 @@ export default function App(): JSX.Element {
       <form className="create-event flex flex-column" action="post">
         <input className="create-event-button" type="submit" value="Create" />
 
-        <input
-          className="create-event-text"
-          type="text"
-          name="job"
-          id="job"
-          value="New job with a long title more long"
-          placeholder="Job"
-        />
         <div className="from-to-dates">
           <input
             className="create-event-text"
@@ -174,6 +166,24 @@ export default function App(): JSX.Element {
             value=""
             placeholder="end"
           />
+        </div>
+
+        <input
+          className="create-event-text"
+          type="text"
+          name="job"
+          id="job"
+          value="New job with a long title more long"
+          placeholder="Job"
+        />
+        <div className="grow-wrap">
+          <textarea
+            className="authority_body-input has-value"
+            name="text"
+            id="text"
+            value="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+            placeholder="Annotations..."
+          ></textarea>
         </div>
       </form>
     );

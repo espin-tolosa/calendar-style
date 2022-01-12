@@ -1,6 +1,7 @@
 :root {
   --header_height: 2rem;
   --font_size: 16px;
+  --calendar_width: 450px;
 }
 
 .App {
@@ -25,7 +26,7 @@ html {
 }
 @media (max-width: 640px) {
   html {
-    font-size: calc(0.8 * var(--font_size));
+    font-size: calc(0.9 * var(--font_size));
   }
 }
 
@@ -53,7 +54,7 @@ html {
 .calendar {
   margin-top: 1em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--calendar_width), 1fr));
   gap: 0.5rem;
   margin-inline: 1em;
 }
@@ -235,7 +236,8 @@ html {
   gap: 5px;
 }
 .controller-on {
-  grid-template-columns: 0.4fr 1fr;
+  grid-template-columns: repeat(2, minmax(var(100px), 1fr));
+  grid-template-columns: minmax(30ch, 20px) 1fr;
 }
 .controller-off {
   grid-template-columns: 0fr 1fr;
@@ -345,6 +347,7 @@ html {
 
 .create-event {
   padding-inline: 1em;
+  gap: 1rem;
 }
 .create-event-button {
   background: white;
@@ -365,10 +368,8 @@ input:focus {
 
 .create-event-text {
   border-radius: 5px;
-
   background: lightgray;
   padding: 2px 1ch 2px 1ch;
-  margin-top: 1em;
 }
 .create-event-text:focus {
   background: white;
@@ -384,10 +385,62 @@ input:focus {
 .from-to-dates {
   display: flex;
   justify-content: space-between;
-  flex: 1 0 0;
+  flex-wrap: wrap;
+  flex: 0 1 100%;
 }
 
 .from-to-dates .create-event-text {
-  width: 46%;
-  margin-bottom: 1em;
+  width: 11ch;
+}
+
+/* Text area */
+
+.grow-wrap {
+  /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+  display: grid;
+}
+.grow-wrap::after {
+  /* Note the weird space! Needed to preventy jumpy behavior */
+  content: attr(data-replicated-value) " ";
+
+  /* This is how textarea text behaves */
+  white-space: pre-wrap;
+
+  /* Hidden from view, clicks, and screen readers */
+  visibility: hidden;
+}
+.grow-wrap > textarea {
+  /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+  resize: none;
+  /* Firefox shows scrollbar on growth, you can hide like this. */
+  overflow: hidden;
+}
+.grow-wrap > textarea,
+.grow-wrap::after {
+  /* Identical styling required!! */
+  padding: 1px 1ch 1px 1ch;
+  font: inherit;
+  font-size: 0.9rem;
+  /* Place on top of each other */
+}
+
+textarea {
+  border-radius: 5px;
+  background: lightgray;
+}
+
+textarea:focus {
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 5px;
+  outline: 1px solid gray;
+}
+
+textarea:focus {
+  background: white;
+  color: black;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 5px;
+}
+
+.has-value {
+  background: white;
+  color: gray;
 }
