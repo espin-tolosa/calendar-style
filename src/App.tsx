@@ -1,13 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import "./styles.css";
-
+/*
 const events = [
   { id: 1, start: 1, job: "Starting 1" },
   { id: 2, start: 22, job: "Starting 2" },
   { id: 3, start: 22, job: "Starting 3" },
   { id: 4, start: 22, job: "Starting 4" },
   { id: 5, start: 22, job: "Starting 5" }
-];
+];*/
+const events = [];
 
 function DayStart({ weekday }: { weekday: string }) {
   const options = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];

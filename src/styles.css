@@ -1,5 +1,6 @@
 :root {
-  --header-height: 2rem;
+  --header_height: 2rem;
+  --font_size: 16px;
 }
 
 .App {
@@ -20,11 +21,7 @@ html {
 }
 
 html {
-  font-size: calc(1vw + 0.4rem);
-}
-
-body {
-  background: white;
+  font-size: var(--font_size);
 }
 
 .month-start-mon {
@@ -48,47 +45,60 @@ body {
 .month-start-sun {
   grid-column-start: min(6, 7);
 }
-
-.month .day {
-  border-radius: 5px;
-}
-.board {
-  background: transparent;
+.calendar {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .month {
   display: grid;
   justify-content: right;
   grid-template-columns: repeat(7, 1fr);
   overflow: hidden;
-  gap: 0px;
+  gap: 1px;
   position: relative;
-  margin-bottom: 4em;
-  margin-left: 0;
-}
-.day {
-  flex: 1; /* grow:0 shrink:1 basis:100% */
-  border: 1px solid gray;
-  /*  background: hsl(0, 0%, 70%);*/
-  background: transparent;
-  min-height: 2rem;
-  transition: background 0.1s ease-in;
+  padding-inline: 0rem;
+  margin-inline: 1em;
+  outline: 1px solid gray;
+  box-shadow: rgba(0, 0, 0, 0.7) 0 0 5px;
+  border-radius: 5px;
 }
 
-.month .day:active {
+.day {
+  min-height: calc(90vh / 10);
+  transition: background 0.1s ease-in-out;
+  border: 1px solid lightgray;
+}
+.day:hover {
+  background: hsl(0, 0%, 93%);
+  outline: 1px solid lightgray;
+}
+.day:active {
   background: hsl(100, 60%, 70%);
 }
 
-.month .day-header {
+.day:hover .day-header,
+.day.hover .day-header {
+  background: darkgray;
+}
+
+.day-header {
   display: flex;
   justify-content: right;
-  background: darkgray;
-  font-size: 0.5rem;
+  background: lightgray;
+  font-size: 0.7rem;
+  font-weight: bold;
   padding: 1px 1px 1px;
   margin-bottom: 0.5em;
+  transition: background 0.1s ease-in-out;
 }
-.month .day-header:hover {
+/*
+.day-header-hover {
   background: hsl(0, 0%, 60%);
-}
+  transition: background 0.2s ease-in-out;
+}*/
+
 .day-spot {
   font-size: 0.5rem;
   display: flex;
@@ -217,6 +227,7 @@ body {
 .main-layout {
   display: grid;
   grid-template-columns: 0.4fr 1fr;
+  gap: 5px;
 }
 @media (max-width: 640px) {
   .main-layout {
@@ -225,7 +236,7 @@ body {
 }
 
 .header-layout {
-  height: var(--header-height);
+  height: var(--header_height);
   /* to stick */
   top: 0;
   z-index: 12;
@@ -266,7 +277,7 @@ body {
   top: 0;
 }
 .top-controller {
-  top: calc(var(--header-height));
+  top: calc(var(--header_height));
 }
 
 /* calendar */
@@ -316,7 +327,7 @@ body {
 }
 .smooth-display-off {
   border-bottom: transparent;
-  max-height: calc(0 * var(--header-height));
+  max-height: calc(0 * var(--header_height));
 }
 
 /* Create event */
