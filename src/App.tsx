@@ -123,83 +123,111 @@ export default function App(): JSX.Element {
 
       */
 
+  const Header = () => {
+    return (
+      <div className="header-layout sticky">
+        <div className="flex sticky">
+          <div className="header">
+            <div className="left-header">JH Diary</div>
+            <div className="center-header hidden">
+              Today: 10 of January of 2022
+            </div>
+            <div className="right-header">Logout</div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const CreateEvent = () => {
+    return (
+      <form className="create-event flex flex-column" action="post">
+        <input className="create-event-button" type="submit" value="Create" />
+
+        <input
+          className="create-event-text"
+          type="text"
+          name="job"
+          id="job"
+          value="New job with a long title more long"
+          placeholder="Job"
+        />
+        <div className="from-to-dates">
+          <input
+            className="create-event-text"
+            type="text"
+            name="start"
+            id="start"
+            value="31/01/2022"
+            placeholder="start"
+          />
+          <input
+            className="create-event-text"
+            type="text"
+            name="end"
+            id="end"
+            value=""
+            placeholder="end"
+          />
+        </div>
+      </form>
+    );
+  };
+
+  const Month = () => {
+    return (
+      <div className="month">
+        <DayStart weekday={"wed"} />
+        {days.map((day) => (
+          <Day key={day.toString()} day={day} />
+        ))}
+      </div>
+    );
+  };
+
+  const [toogleCreate, setToogleCreate] = useState(false);
+
+  let stateToggle = "";
+  if (toogleCreate) {
+    stateToggle = "smooth-display-on";
+  } else {
+    stateToggle = "smooth-display-off";
+  }
+  const controllerLayoutClassName = `controller-layout smooth ${stateToggle} sticky top-controller`;
+
   return (
     <div className="App">
+      <div
+        className="header-layout sticky"
+        onClick={() => setToogleCreate((prev) => !prev)}
+      >
+        <div className="flex sticky">
+          <div className="header">
+            <div className="left-header">JH Diary</div>
+            <div className="center-header hidden">
+              Today: 10 of January of 2022
+            </div>
+            <div className="right-header">Logout</div>
+          </div>
+        </div>
+      </div>
+
       <div className="main-layout">
-        <div className="header-layout sticky">
-          <div className="flex sticky">
-            <div className="header">
-              <div className="left-header">JH Diary</div>
-              <div className="center-header hidden">
-                Today: 10 of January of 2022
-              </div>
-              <div className="right-header">Logout</div>
-            </div>
+        <div className={controllerLayoutClassName}>
+          <div className="controller sticky top-controller">
+            {true && <CreateEvent />}
           </div>
         </div>
 
-        <div className="controller-layout sticky top-controller">
-          <div className="flex sticky top-controller">
-            <div className="controller">
-              {" "}
-              <div className="smooth">
-                {
-                  <form className="create-event flex flex-column" action="post">
-                    <input
-                      className="create-event-button"
-                      type="submit"
-                      value="Create"
-                    />
-
-                    <input
-                      className="create-event-text"
-                      type="text"
-                      name="job"
-                      id="job"
-                      value="New job with a long title more long"
-                      placeholder="Job"
-                    />
-                    <div className="from-to-dates">
-                      <input
-                        className="create-event-text"
-                        type="text"
-                        name="start"
-                        id="start"
-                        value="31/01/2022"
-                        placeholder="start"
-                      />
-                      <input
-                        className="create-event-text"
-                        type="text"
-                        name="end"
-                        id="end"
-                        value=""
-                        placeholder="end"
-                      />
-                    </div>
-                  </form>
-                }
-              </div>
+        <div className="calendar-layout">
+          {true && (
+            <div className="calendar">
+              <Month />
+              <Month />
+              <Month />
+              <Month />
             </div>
-          </div>
-        </div>
-
-        <div className="calendar-layout flex">
-          <div className="calendar">
-            <div className="month">
-              <DayStart weekday={"wed"} />
-              {days.map((day) => (
-                <Day key={day.toString()} day={day} />
-              ))}
-            </div>
-
-            <div className="month">
-              <DayStart weekday={"wed"} />
-              {days.map((day) => (
-                <Day key={day.toString()} day={day} />
-              ))}
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
