@@ -232,8 +232,13 @@ html {
 
 .main-layout {
   display: grid;
-  grid-template-columns: 0.4fr 1fr;
   gap: 5px;
+}
+.controller-on {
+  grid-template-columns: 0.4fr 1fr;
+}
+.controller-off {
+  grid-template-columns: 0fr 1fr;
 }
 @media (max-width: 640px) {
   .main-layout {

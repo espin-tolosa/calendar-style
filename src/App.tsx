@@ -31,6 +31,10 @@ const Day = ({ day }: { day: number }) => {
   const tempDay = String(day);
   const dayPadd = day < 10 ? `0${tempDay}` : tempDay;
 
+  const styles = {
+    backgroundColor: "orange"
+  } as const;
+
   return (
     <div
       className="day"
@@ -192,10 +196,10 @@ export default function App(): JSX.Element {
   let controllerToggle = "";
   if (toogleCreate) {
     stateToggle = "smooth-display-on";
-    controllerToggle = "0.4fr";
+    controllerToggle = "controller-on";
   } else {
     stateToggle = "smooth-display-off";
-    controllerToggle = "0fr";
+    controllerToggle = "controller-off";
   }
   const controllerLayoutClassName = `controller-layout smooth ${stateToggle} sticky top-controller`;
 
@@ -214,10 +218,7 @@ export default function App(): JSX.Element {
         </div>
       </div>
 
-      <div
-        className="main-layout"
-        style={{ "grid-template-columns": `${controllerToggle} 1fr` }}
-      >
+      <div className={`main-layout ${controllerToggle}`}>
         <div className={controllerLayoutClassName}>
           <div className="controller sticky top-controller">
             {true && <CreateEvent />}
