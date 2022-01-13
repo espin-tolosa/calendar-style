@@ -174,7 +174,8 @@ textarea {
  */
 
 button,
-input { /* 1 */
+input {
+  /* 1 */
   overflow: visible;
 }
 
@@ -184,7 +185,8 @@ input { /* 1 */
  */
 
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
 
@@ -347,18 +349,38 @@ template {
 [hidden] {
   display: none;
 }
-
-
 :root {
   --header_height: 2rem;
-  --font_size: 16px;
-  --calendar_width: 480px;
+}
+
+@media (min-width: 320px) {
+  /* smartphones, iPhone, portrait 480x320 phones */
+}
+
+@media (min-width: 481px) {
+  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+}
+@media (min-width: 641px) {
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+}
+@media (min-width: 961px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+}
+@media (min-width: 1281px) {
+  /* hi-res laptops and desktops */
+  :root {
+    --header_height: 2rem;
+    --font_size: 20px;
+    --calendar_width: 450px;
+  }
 }
 
 .App {
-
-    font-family: monospace;
-  }
+  font-family: sans-serif;
+}
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
   box-sizing: border-box;
@@ -445,8 +467,8 @@ html {
   display: flex;
   justify-content: right;
   background: hsl(0, 0%, 99%);
-  font-size: 0.6rem;
- 
+  /*font-size: 0.6rem;*/
+
   padding: 1px 1px 1px;
   margin-bottom: 0.5em;
   transition: background 0.1s ease-in-out;
@@ -512,17 +534,9 @@ html {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 0.7rem;
 }
-@media (min-width: 641px) {
-  .event {
-    font-size: 0.7rem;
-  }
-}
-@media (max-width: 640px) {
-  .event {
-    font-size: 0.7rem;
-  }
-}
+
 .event:hover {
   background: hsl(1, 100%, 57%);
   cursor: pointer;
@@ -530,7 +544,7 @@ html {
 
 .event-holder {
   color: transparent;
-  font-size: 1rem;
+  /*font-size: 1rem;*/
   margin-block: 0.6rem;
 }
 
@@ -613,6 +627,7 @@ html {
   background: hsl(0, 0%, 95%);
   border-inline: 1px solid hsl(0, 0%, 80%);
   border-radius: 0 0 10px 0;
+  /*font-size: 0.6rem;*/
 }
 @media (max-width: 640px) {
   .controller-layout {
@@ -633,7 +648,7 @@ html {
   align-items: flex-end;
   justify-content: right;
   padding-inline: 1em;
-  font-size: 1rem;
+  /*font-size: 1rem;*/
 }
 
 /* controller */
@@ -687,7 +702,7 @@ html {
 }
 
 .smooth-display-on {
-  max-height: 80vh;
+  max-height: calc(100vh - var(--header_height));
 }
 .smooth-display-off {
   border-bottom: transparent;
@@ -727,13 +742,13 @@ input:focus {
 .create-event-text:focus {
   background: white;
   color: black;
-  font-weight:900;
+  font-weight: 900;
   box-shadow: rgba(0, 0, 0, 0.8) 0 0 5px;
 }
 .create-event-text[value]:not([value=""]) {
   background: white;
   color: black;
-  font-weight:900;
+  font-weight: 900;
 }
 .from-to-dates {
   display: flex;
@@ -746,7 +761,7 @@ input:focus {
   width: clamp(9ch, 12ch, 15ch);
   margin-block: 0.5rem;
   text-align: center;
- }
+}
 
 /* Text area */
 
@@ -775,7 +790,6 @@ input:focus {
   /* Identical styling required!! */
   padding: 1px 1ch 1px 1ch;
   font: inherit;
-  font-size: 0.9rem;
   /* Place on top of each other */
 }
 
